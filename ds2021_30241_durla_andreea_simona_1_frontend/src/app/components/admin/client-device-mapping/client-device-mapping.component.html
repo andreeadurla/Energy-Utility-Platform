@@ -1,0 +1,130 @@
+<div class="container">
+    <mat-accordion multi>
+        <mat-expansion-panel #matExpansionPanel1 expanded>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Client devices
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div *ngIf="clientDevices?.length; else elseBlock1">
+                <mat-table #table1 [dataSource]="clientDevices">
+                    <!-- Remove Button -->
+                    <ng-container matColumnDef="actions">
+                        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                        <mat-cell *matCellDef="let element; let index"> 
+                            <button mat-button color="warn" class="action-button" (click)="remove(index, element)">
+                                <mat-icon>remove</mat-icon>
+                            </button>  
+                        </mat-cell>
+                    </ng-container>
+            
+                    <!-- Id Column -->
+                    <ng-container matColumnDef="id">
+                        <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+                    </ng-container>
+            
+                    <!-- Description Column -->
+                    <ng-container matColumnDef="description">
+                        <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+                    </ng-container>
+            
+                    <!-- Address Column -->
+                    <ng-container matColumnDef="address">
+                        <mat-header-cell *matHeaderCellDef> Address </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.address}} </mat-cell>
+                    </ng-container>
+            
+                    <!-- Max Energy Consumption Column -->
+                    <ng-container matColumnDef="maxEnergyConsumption">
+                        <mat-header-cell *matHeaderCellDef> Max Energy Consumption </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.maxEnergyConsumption}} kW</mat-cell>
+                    </ng-container>
+            
+                    <!-- Avg Energy Consumption Column -->
+                    <ng-container matColumnDef="avgEnergyConsumption">
+                        <mat-header-cell *matHeaderCellDef> Avg Energy Consumption </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.avgEnergyConsumption}} kW</mat-cell>
+                    </ng-container>
+            
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row class="box" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </mat-table>
+            </div>
+
+            <ng-template #elseBlock1>
+                <p class="warning">This client has no devices</p>
+            </ng-template>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel #matExpansionPanel2>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Unassigned devices
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div *ngIf="unassignedDevices?.length; else elseBlock2">
+                <mat-table #table2 [dataSource]="unassignedDevices">
+
+                    <!-- Add Button -->
+                    <ng-container matColumnDef="actions">
+                        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                        <mat-cell *matCellDef="let element; let i = index"> 
+                            <button mat-button color="warn" class="action-button" (click)="add(i, element)">
+                                <mat-icon>add</mat-icon>
+                            </button>  
+                        </mat-cell>
+                    </ng-container>
+            
+                    <!-- Id Column -->
+                    <ng-container matColumnDef="id">
+                        <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+                    </ng-container>
+            
+                    <!-- Description Column -->
+                    <ng-container matColumnDef="description">
+                        <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+                    </ng-container>
+            
+                    <!-- Address Column -->
+                    <ng-container matColumnDef="address">
+                        <mat-header-cell *matHeaderCellDef> Address </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.address}} </mat-cell>
+                    </ng-container>
+            
+                    <!-- Max Energy Consumption Column -->
+                    <ng-container matColumnDef="maxEnergyConsumption">
+                        <mat-header-cell *matHeaderCellDef> Max Energy Consumption </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.maxEnergyConsumption}} kW</mat-cell>
+                    </ng-container>
+            
+                    <!-- Avg Energy Consumption Column -->
+                    <ng-container matColumnDef="avgEnergyConsumption">
+                        <mat-header-cell *matHeaderCellDef> Avg Energy Consumption </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.avgEnergyConsumption}} kW</mat-cell>
+                    </ng-container>
+            
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row class="box" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </mat-table>
+            </div>
+
+            <ng-template #elseBlock2>
+                <p class="warning">There are no unassigned devices</p>
+            </ng-template>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+    <div id="button-container">
+        <button type="submit" mat-stroked-button color="primary"
+                (click)="onSubmit()">
+            Assign
+        </button>
+    </div>
+</div>
+

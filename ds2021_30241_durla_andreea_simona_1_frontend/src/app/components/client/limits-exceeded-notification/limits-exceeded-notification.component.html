@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="content">
+        <h3 id="title">Energy Usage Notice</h3>
+        <p id="date-time">{{data.timestamp | date: 'medium'}}</p>
+        <p id="sensor">
+            Sensor 
+            <a [routerLink]="['/client/energy-statistics']" [queryParams]="{ id: data.sensorId, date: currentDate}"
+                (click)="dismissSnackBar()">
+                #{{data.sensorId}}
+            </a> 
+            has exceeded maximum power
+        </p>
+        <p id="power">Measured power: <span>{{data.energyConsumption}} kW</span></p>
+    </div>
+    <div class="action">
+        <button mat-icon-button (click)="dismissSnackBar()">
+          <mat-icon>close</mat-icon>
+        </button>
+    </div>
+</div>
+  

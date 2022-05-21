@@ -1,0 +1,58 @@
+<div id="container">
+    <mat-card *ngFor="let device of devices">
+        <mat-card-title>
+            Device #{{device.id}}
+            <button mat-button (click)="viewStatistics(device)">
+                <mat-icon id="energy">assessment</mat-icon>
+                <span>Energy statistics</span>
+            </button>
+        </mat-card-title>
+
+        <mat-card-content>
+            <div id="description">
+                {{device.description}}
+            </div>
+
+            <div id="address">
+                <mat-icon>location_on</mat-icon>
+                <span>{{device.address}}</span>
+            </div>
+
+            <div id="energy-consumption">
+                <div id="max-energy">
+                    Max energy consumption: 
+                    <span>{{device.maxEnergyConsumption}}kW</span>
+                </div>
+
+                <div id="avg-energy">
+                    Avg energy consumption: 
+                    <span>{{device.avgEnergyConsumption}}kW</span>
+                </div>
+            </div> 
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-description>
+                        Sensor details
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <div id="sensor-details">
+                    <p>
+                        Sensor #{{device.sensorDetails.id}}
+                    </p>
+                    <p>
+                        {{device.sensorDetails.description}}
+                    </p>
+
+                    <p>
+                        Max energy consumption: 
+                        <span>{{device.sensorDetails.maxValue}}kW</span>
+                    </p>
+                </div>
+            </mat-expansion-panel>
+
+        </mat-card-content>
+
+    </mat-card>
+</div>

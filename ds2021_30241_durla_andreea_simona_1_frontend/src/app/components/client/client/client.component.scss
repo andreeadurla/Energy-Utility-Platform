@@ -1,0 +1,145 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+mat-toolbar {
+    height: 50px;
+    background: green;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+
+    a {
+        color: white;
+        text-decoration: none;
+    }
+}
+
+#notification-button {
+    margin-left: 7rem;
+    color: white;
+}
+
+.unread-notification {
+    background-color: rgb(232, 232, 232);
+}
+
+::ng-deep .notifications-list {
+    max-width: 350px !important;
+    min-height: 150px !important;
+    max-height: 500px !important;
+}
+
+#notification {
+    margin: 10px 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid rgb(232, 232, 232);
+}
+
+#no-notifications {
+    margin: 10px 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: rgb(180, 1, 1);
+}
+
+#notification p {
+    margin-bottom: 0;
+}
+
+#date-time {
+    font-style: italic;
+    font-size: small;
+    font-weight: 500;
+}
+
+#sensor a {
+    color: rgb(2, 2, 145);
+    text-decoration: none;
+    font-style: italic;
+    font-size: small;
+    font-weight: 500;
+}
+
+#power span {
+    font-style: italic;
+    text-decoration: underline;
+    font-size: small;
+    font-weight: 500;
+}
+
+::ng-deep .notification-snackbar {
+    margin-top: 5rem !important;
+    background-color: rgb(244, 244, 242);
+    color: black;
+    white-space: pre-wrap;
+}
+
+mat-sidenav-container {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    background: rgb(250, 248, 248);
+}
+
+mat-sidenav {
+    height: 100%;
+    width: 10%;
+    background: rgb(250, 248, 248);
+    color: green;
+    width: 200px;
+    margin: 50px 10px 10px 0px;
+    padding: 20px 10px 10px 10px;
+    position: fixed;
+    left: 0;
+}
+
+mat-sidenav-content {
+    min-height: 95vh;
+    height: 100%;
+    width: 100%;
+}
+
+#username {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-size: 1rem;
+    font-size: larger;
+    font-weight: 500;
+
+    mat-icon {
+        height: 40px;
+        width: 40px;
+        font-size: 40px;
+    }
+}
+
+.menu-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1rem;
+
+    .mat-icon {
+        margin-right: 8px;
+    }
+}
+
+mat-divider {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    background-color: white;
+}
+
+.active-button {
+    background-color: rgb(207, 233, 210);
+}

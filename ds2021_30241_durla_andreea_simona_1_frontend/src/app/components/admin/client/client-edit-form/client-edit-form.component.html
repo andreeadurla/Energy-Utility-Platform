@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="header">
+        <h1 mat-dialog-title>
+            <span>
+                Edit client details
+            </span>
+            <button mat-icon-button mat-dialog-close>
+                <mat-icon color="warn">close</mat-icon>
+            </button>
+        </h1>
+    </div>
+    
+    <div mat-dialog-content>
+    
+        <!-- Details Form -->
+        <form [formGroup]="detailsFormGroup" (ngSubmit)="onSubmit()">
+    
+            <!-- Name Field -->
+            <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name" placeholder="eg. John Doe">
+            
+                <!-- Error messages -->
+                <mat-error *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+                    <mat-error *ngIf="name?.errors?.required">
+                        Required
+                    </mat-error>
+
+                    <mat-error *ngIf="name?.errors?.valid">
+                        Invalid
+                    </mat-error>
+                </mat-error>
+            </mat-form-field>
+    
+            <!-- BirthDate Field -->
+            <mat-form-field appearance="fill">
+                <mat-label>BirthDate</mat-label>
+                <input matInput formControlName="birthDate" [matDatepicker]="picker" readonly>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            
+                <!-- Error messages -->
+                <mat-error *ngIf="birthDate?.invalid && (birthDate?.dirty || birthDate?.touched)">
+                    <mat-error *ngIf="birthDate?.errors?.required">
+                        Required
+                    </mat-error>
+                </mat-error>
+            </mat-form-field>
+    
+            <!-- Address Field -->
+            <mat-form-field appearance="fill">
+                <mat-label>Address</mat-label>
+                <input matInput formControlName="address" placeholder="eg. Street Parului, number 3">
+            
+                <!-- Error messages -->
+                <mat-error *ngIf="address?.invalid && (address?.dirty || address?.touched)">
+                    <mat-error *ngIf="address?.errors?.required">
+                        Required
+                    </mat-error>
+
+                    <mat-error *ngIf="address?.errors?.valid">
+                        Cannot contain special caracters "@#$^&*()"
+                    </mat-error>
+                </mat-error>
+            </mat-form-field>
+    
+            <div id="submit-button">
+                <button type="submit" mat-stroked-button color="primary" [disabled]="!detailsFormGroup.valid">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+

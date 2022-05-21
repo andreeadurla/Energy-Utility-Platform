@@ -1,0 +1,64 @@
+<div class="container">
+    <mat-toolbar>
+        <a routerLink="/admin" (click)="activate(0)">Energy Utility Platform</a>
+    </mat-toolbar>
+        
+    <mat-sidenav-container>
+        <mat-sidenav mode="side" opened>
+      
+            <div id="username">
+              <mat-icon>person_pin</mat-icon>
+              <span>{{username}}</span>
+            </div>
+      
+            <mat-divider></mat-divider>
+
+            <button mat-button 
+                    [ngClass]="{'menu-button': true, 'active-button': selected === 1}" 
+                    (click)="activate(1)"
+                    routerLink="/admin">
+              <mat-icon>home</mat-icon>
+              <span>Home</span>
+            </button>
+      
+            <button mat-button 
+                    [ngClass]="{'menu-button': true, 'active-button': selected === 2}" 
+                    (click)="activate(2)"
+                    routerLink="/admin/clients">
+              <mat-icon>person</mat-icon>
+              <span>Client</span>
+            </button>
+        
+            <button mat-button
+                    [ngClass]="{'menu-button': true, 'active-button': selected === 3}" 
+                    (click)="activate(3)"
+                    routerLink="/admin/devices">
+              <mat-icon>devices</mat-icon>
+              <span>Device</span>
+            </button>
+        
+            <button mat-button
+                    [ngClass]="{'menu-button': true, 'active-button': selected === 4}" 
+                    (click)="activate(4)"
+                    routerLink="/admin/sensors">
+              <mat-icon>wifi_tethering</mat-icon>
+              <span>Sensor</span>
+            </button>
+        
+            <mat-divider></mat-divider>
+        
+            <button mat-button class="menu-button" (click)="logout()">
+              <mat-icon>logout</mat-icon>
+              <span>Logout</span>
+            </button>
+        </mat-sidenav>
+      
+        <mat-sidenav-content class="content mat-elevation-z8">
+          
+            <router-outlet></router-outlet> 
+          
+        </mat-sidenav-content>
+      
+      </mat-sidenav-container>
+</div>
+  

@@ -1,0 +1,65 @@
+<div class="container" *ngIf="dataSource">
+
+    <div class="button-container">
+        <button mat-stroked-button color="primary" (click)="onCreate()">
+            <mat-icon>add</mat-icon>
+            <span>Create</span>
+        </button>    
+    </div>
+
+    <div>
+        <mat-table #table [dataSource]="dataSource.content">
+
+            <ng-container matColumnDef="assigned">
+                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    <mat-icon *ngIf="element.assigned">devices</mat-icon>
+                </mat-cell>
+            </ng-container>
+
+            <!-- Id Column -->
+            <ng-container matColumnDef="id">
+                <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+            </ng-container>
+
+            <!-- Description Column -->
+            <ng-container matColumnDef="description">
+                <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.description}}  </mat-cell>
+            </ng-container>
+
+            <!-- Max Value Column -->
+            <ng-container matColumnDef="maxValue">
+                <mat-header-cell *matHeaderCellDef> Max Value </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.maxValue}} kW</mat-cell>
+            </ng-container>
+
+            <!-- Edit & Delete Buttons -->
+            <ng-container matColumnDef="actions">
+                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                <mat-cell *matCellDef="let element, let i = index"> 
+                    <button mat-stroked-button color="primary" class="action-button"
+                            (click)="onEdit(i, element)">
+                        <span>Edit</span>
+                    </button> 
+
+                    <button mat-stroked-button color="warn" class="action-button"
+                            (click)="onDelete(i, element.id)">
+                        <span>Delete</span>
+                    </button>    
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+
+        <mat-paginator #paginator
+                [length]="dataSource.totalElements"
+                [pageSizeOptions]="[5, 10, 15]" 
+                (page)="onPageChange($event)">
+        </mat-paginator>
+    </div>
+
+</div>

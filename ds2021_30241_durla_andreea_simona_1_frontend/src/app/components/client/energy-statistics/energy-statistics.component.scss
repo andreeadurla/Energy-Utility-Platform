@@ -1,0 +1,69 @@
+#container {
+    display: flex;
+    justify-content: center;
+}
+
+mat-card {
+    margin-top: 50px;
+    width: 80%;
+}
+
+mat-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form {
+    width: 70%;
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+#device {
+    width: 60%;
+}
+
+#date {
+    width: 30%;
+}
+
+.warning {
+    color: red;
+}
+
+#chart {
+    margin-bottom: 5rem;
+}
+
+.mat-expansion-panel:not([class*='mat-elevation-z']) {
+    box-shadow: none;
+}
+
+.mat-expansion-panel-header-title {
+    font-size: larger;
+    font-weight: 400;
+    justify-content: center;
+}
+
+#monitored-values {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.mat-header-cell {
+    padding: 0;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+}
+  
+.mat-cell {
+    padding: 0;
+    text-align: center;
+    justify-content:center;
+}
+
+

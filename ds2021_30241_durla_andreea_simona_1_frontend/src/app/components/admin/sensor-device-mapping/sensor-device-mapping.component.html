@@ -1,0 +1,97 @@
+<div class="container">
+    <mat-accordion multi>
+        <mat-expansion-panel #matExpansionPanel1 expanded>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Device sensor
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+        
+            <div id="device-sensor-container" *ngIf="deviceSensor?.length; else elseBlock">
+                <div id="remove-button-container">
+                    <button mat-button color="warn" class="action-button" (click)="remove()">
+                        <mat-icon>remove</mat-icon>
+                    </button> 
+                </div>
+
+                <div id="details-container">
+                    <ul id="sensor-details">
+                        <li>
+                            <span>Id:</span>
+                            {{deviceSensor[0].id}}
+                        </li>
+                        <li>
+                            <span>Description:</span> 
+                            <br>
+                            {{deviceSensor[0].description}}
+                        </li>
+                        <li>
+                            <span>Max value:</span>
+                            {{deviceSensor[0].maxValue}} kW
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <ng-template #elseBlock>
+                <p class="warning">This device has no sensor</p>
+            </ng-template>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel #matExpansionPanel2>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Unassigned sensors
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+        
+            <div *ngIf="unassignedSensors?.length; else elseBlock2">
+                <mat-table #table [dataSource]="unassignedSensors">
+
+                    <!-- Add Button -->
+                    <ng-container matColumnDef="actions">
+                        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                        <mat-cell *matCellDef="let element; let i = index"> 
+                            <button mat-button color="warn" class="action-button" (click)="add(i, element)">
+                                <mat-icon>add</mat-icon>
+                            </button>  
+                        </mat-cell>
+                    </ng-container>
+            
+                    <!-- Id Column -->
+                    <ng-container matColumnDef="id">
+                        <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+                    </ng-container>
+            
+                    <!-- Description Column -->
+                    <ng-container matColumnDef="description">
+                        <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+                    </ng-container>
+            
+                    <!-- Max Value Column -->
+                    <ng-container matColumnDef="maxValue">
+                        <mat-header-cell *matHeaderCellDef> Max Value </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.maxValue}} kW</mat-cell>
+                    </ng-container>
+            
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row class="box" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </mat-table>
+            </div>
+
+            <ng-template #elseBlock2>
+                <p class="warning">There are no unassigned sensors</p>
+            </ng-template>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+    <div id="button-container">
+        <button type="submit" mat-stroked-button color="primary"
+                (click)="onSubmit()">
+            Assign
+        </button>
+    </div>
+</div>
+

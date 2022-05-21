@@ -1,0 +1,58 @@
+.container {
+    padding: 3rem;
+}
+
+.button-container {
+    margin-bottom: 2rem;
+}
+
+mat-table {
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    padding: 0;
+}
+
+.mat-header-cell {
+    padding: 0;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+}
+  
+.mat-cell {
+    padding: 0;
+    text-align: center;
+    justify-content:center;
+}
+
+.mat-column-assigned {
+    flex: 0 0 4%;
+}
+
+.mat-column-id {
+    font-size: small;
+    flex: 0 0 15%;
+}
+
+.mat-column-description {
+    font-size: small;
+    flex: 0 0 40%;
+}
+
+.mat-column-maxValue {
+    flex: 0 0 15%;
+}
+
+.mat-column-actions {
+    flex: 0 0 26%;
+}
+
+.action-button {
+    margin-left: 0.5rem;
+}
+
+.mat-row:hover {
+    background-color: rgb(235, 247, 181);
+    cursor: pointer;
+}

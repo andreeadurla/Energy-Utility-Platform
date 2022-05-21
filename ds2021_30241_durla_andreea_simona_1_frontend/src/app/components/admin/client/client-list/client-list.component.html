@@ -1,0 +1,78 @@
+<div class="container" *ngIf="dataSource">
+
+    <div class="button-container">
+        <button mat-stroked-button color="primary" (click)="onCreate()">
+            <mat-icon>add</mat-icon>
+            <span>Create</span>
+        </button>    
+    </div>
+
+    <div class="list-container">
+        <mat-table #table [dataSource]="dataSource.content">
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+                <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+                <mat-cell *matCellDef="let i = index"> 
+                    {{paginator.pageIndex == 0 ? i + 1 : 1 + i + paginator.pageIndex * paginator.pageSize}}
+                </mat-cell>
+            </ng-container>
+
+            <!-- Username Column -->
+            <ng-container matColumnDef="username">
+                <mat-header-cell *matHeaderCellDef> Username </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.username}} </mat-cell>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+            </ng-container>
+
+            <!-- BirthDate Column -->
+            <ng-container matColumnDef="birthDate">
+                <mat-header-cell *matHeaderCellDef> BirthDate </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.birthDate | date: 'mediumDate'}} </mat-cell>
+            </ng-container>
+
+            <!-- Address Column -->
+            <ng-container matColumnDef="address">
+                <mat-header-cell *matHeaderCellDef> Address </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.address}} </mat-cell>
+            </ng-container>
+
+            <!-- Edit & Delete Buttons -->
+            <ng-container matColumnDef="actions">
+                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                <mat-cell *matCellDef="let element; let i = index"> 
+                    <button mat-stroked-button color="primary" class="action-button"
+                            (click)="onEdit(i, element)">
+                        <span>Edit</span>
+                    </button> 
+
+                    <button mat-stroked-button color="warn" class="action-button"
+                            (click)="onDelete(i, element.username)">
+                        <span>Delete</span>
+                    </button>    
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row >
+            <mat-row *matRowDef="let row; columns: displayedColumns;"
+                [ngClass]="{'highlight': selection?.id == row.id}"
+                (click)="highlight(row)">
+            </mat-row>
+        </mat-table>
+
+        <mat-paginator #paginator
+                [length]="dataSource.totalElements"
+                [pageSizeOptions]="[5, 10, 15]" 
+                (page)="onPageChange($event)">
+        </mat-paginator>
+    </div>
+
+    <div class="mapping-container" *ngIf="selection !== undefined">
+        <app-client-device-mapping [clientId]="selection.id"></app-client-device-mapping>
+    </div>
+
+</div>

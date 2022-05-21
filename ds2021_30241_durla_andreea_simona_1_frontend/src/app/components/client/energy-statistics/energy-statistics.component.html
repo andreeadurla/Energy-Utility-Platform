@@ -1,0 +1,78 @@
+<div id="container">
+    <mat-card>
+
+        <mat-card-content>
+            <form [formGroup]="statisticsFormGroup">
+                <!-- Device Field -->
+                <mat-form-field appearance="outline" id="device">
+                    <mat-label>Device</mat-label>
+                    <mat-select formControlName="device"
+                        (selectionChange)="selectionChange($event)">
+                        <mat-option value="all">All</mat-option>
+                        <mat-option *ngFor="let device of devices" [value]="device.sensorId">
+                            {{device.description}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+                <!-- Date Field -->
+                <mat-form-field appearance="outline" id="date">
+                    <mat-label>Date</mat-label>
+                    <input matInput formControlName="date" [matDatepicker]="picker" 
+                            [min]="minDate" [max]="maxDate" readonly
+                            (dateChange)="dateChange($event)">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </form>
+
+            <div *ngIf="dataSource && dataSource.content.length; else elseBlock1">
+
+                <div id="chart" [chart]="chart"></div>
+
+                <mat-expansion-panel expanded>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Monitored Values
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                    <div id="monitored-values">
+                        <mat-table #table [dataSource]="dataSource.content">
+                            <!-- Sensor Id Column -->
+                            <ng-container matColumnDef="sensorId">
+                                <mat-header-cell *matHeaderCellDef> Sensor Id </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.sensorId}} </mat-cell>
+                            </ng-container>
+                
+                            <!-- Timestamp Column -->
+                            <ng-container matColumnDef="timestamp">
+                                <mat-header-cell *matHeaderCellDef> Timestamp </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.timestamp | date: 'medium'}} </mat-cell>
+                            </ng-container>
+                
+                            <!-- Energy Consumption Column -->
+                            <ng-container matColumnDef="energyConsumption">
+                                <mat-header-cell *matHeaderCellDef> Energy Consumption </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.energyConsumption}} kWh</mat-cell>
+                            </ng-container>
+                
+                            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row >
+                            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                        </mat-table>
+                
+                        <mat-paginator #paginator
+                                [length]="dataSource.totalElements"
+                                [pageSizeOptions]="[5, 10, 15]" 
+                                (page)="onPageChange($event)">
+                        </mat-paginator>
+                    </div>
+                </mat-expansion-panel>
+            </div>
+
+            <ng-template #elseBlock1>
+                <p class="warning">No monitored data</p>
+            </ng-template>
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -1,0 +1,19 @@
+<h1 mat-dialog-title *ngIf="data.title">
+    {{data.title}}
+</h1>
+  
+<div mat-dialog-content>
+    <p>{{data.message || message}}</p>
+</div>
+  
+<div mat-dialog-actions>
+    <div>
+        <button mat-stroked-button (click)="onConfirm()" mat-dialog-close>
+            {{data.confirmButtonText || confirmButtonText}}
+        </button>
+
+        <button mat-stroked-button (click)="onDismiss()" mat-dialog-close>
+            {{data.cancelButtonText || cancelButtonText}}
+        </button>
+    </div>
+</div>

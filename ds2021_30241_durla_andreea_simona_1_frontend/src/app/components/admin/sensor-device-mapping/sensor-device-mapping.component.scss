@@ -1,0 +1,91 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#button-container {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+mat-expansion-panel {
+    margin-bottom: 1rem;
+}
+
+mat-expansion-panel-header {
+    font-size: 115%;
+}
+
+#device-sensor-container {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+#remove-button-container {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+}
+
+#details-container {
+    width: 80%;
+}
+
+#sensor-details {
+    list-style-type: none;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+span {
+    font-size: 110%;
+    font-weight: 160;
+}
+
+.warning {
+    color: red;
+}
+
+mat-table {
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    padding: 0;
+}
+
+.mat-header-cell {
+    padding: 0;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+}
+  
+.mat-cell {
+    padding: 0;
+    text-align: center;
+    justify-content:center;
+}
+
+.mat-column-actions {
+    flex: 0 0 20%;
+  }
+
+.mat-column-id {
+    font-size: small;
+    flex: 0 0 15%;
+}
+
+.mat-column-description {
+    font-size: small;
+    flex: 0 0 40%;
+}
+
+.mat-column-maxValue {
+    flex: 0 0 15%;
+}

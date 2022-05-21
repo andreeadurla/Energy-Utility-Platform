@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+
+  react:
+    image: ds2021-30241-durla-andreea-1-f
+    ports:
+       - "80:80"

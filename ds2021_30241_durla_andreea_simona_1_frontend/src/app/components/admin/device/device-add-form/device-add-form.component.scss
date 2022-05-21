@@ -1,0 +1,43 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    margin-bottom: 1rem;
+}
+
+.mat-dialog-title{
+    background-color: white;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+
+    span {
+        align-self: flex-end;
+    }
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.mat-form-field {
+    margin-top: 16px;
+}
+
+#energy {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+
+    .mat-form-field {
+        width: 47.5%;
+    }
+}
+
+#submit-button {
+    display: flex;
+    justify-content: center;
+}

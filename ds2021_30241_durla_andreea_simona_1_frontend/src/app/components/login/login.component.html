@@ -1,0 +1,60 @@
+<div class="container">
+    <mat-card>
+        <mat-card-title>
+            Login
+        </mat-card-title>
+
+        <mat-card-content>
+            <form [formGroup]="loginFormGroup">
+            
+                <!-- UserName Field -->
+                <mat-form-field appearance="fill">
+                    <mat-label>Username</mat-label>
+                    <input matInput formControlName="username" placeholder="eg. john.doe" autocomplete="off" required>
+    
+                    <!-- Error messages -->
+                    <mat-error *ngIf="username?.invalid && (username?.dirty || username?.touched)">
+                        <mat-error *ngIf="username?.errors?.required">
+                            Required
+                        </mat-error>
+
+                        <mat-error *ngIf="username?.errors?.valid">
+                            Invalid
+                        </mat-error>
+                    </mat-error>
+                </mat-form-field>
+    
+                 <!-- Password Field -->
+                 <mat-form-field appearance="fill">
+                    <mat-label>Password</mat-label>
+                    <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" autocomplete="off" required>
+                    <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-pressed]="hidePassword">
+                        <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+    
+                    <!-- Error messages -->
+                    <mat-error *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+                        <mat-error *ngIf="password?.errors?.required">
+                            Required
+                        </mat-error>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-error id="invalid-credentials" *ngIf="invalidCredentials">
+                        Invalid credentials
+                </mat-error>
+            </form>
+
+            <mat-card-actions>
+                <div id="submit-button">
+                    <button type="submit" mat-stroked-button color="primary" 
+                            [disabled]="!loginFormGroup.valid"
+                            (click)="onSubmit()">
+                        Submit
+                    </button>
+                </div>
+            </mat-card-actions>
+        </mat-card-content>
+    </mat-card>
+
+</div>

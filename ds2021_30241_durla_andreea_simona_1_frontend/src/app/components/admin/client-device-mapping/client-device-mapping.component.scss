@@ -1,0 +1,75 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#button-container {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+mat-expansion-panel {
+    margin-bottom: 1rem;
+}
+
+mat-expansion-panel-header {
+    font-size: 115%;
+}
+
+mat-table {
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 0;
+}
+
+.warning {
+    color: red;
+}
+
+.mat-header-cell {
+    padding: 0;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+}
+
+.mat-cell {
+    padding: 0;
+    text-align: center;
+    justify-content:center;
+}
+
+.mat-column-actions {
+    flex: 0 0 5.5%;
+}
+
+.mat-column-id {
+    font-size: small;
+    flex: 0 0 15%;
+}
+
+.mat-column-description {
+    font-size: small;
+    flex: 0 0 31.5%;
+}
+
+.mat-column-address {
+    font-size: small;
+    flex: 0 0 27.5%;
+}
+
+.mat-column-maxEnergyConsumption {
+    flex: 0 0 10%;
+}
+
+.mat-column-avgEnergyConsumption {
+    flex: 0 0 10%;
+}
+
+.action-button {
+    width: 80%;
+    padding: 0;
+}

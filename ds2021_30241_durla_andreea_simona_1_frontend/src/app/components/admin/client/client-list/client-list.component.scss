@@ -1,0 +1,73 @@
+.container {
+    padding: 3rem;
+}
+
+.button-container {
+    margin-bottom: 2rem;
+}
+
+.list-container {
+    margin-bottom: 4rem;
+}
+
+mat-table {
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    padding: 0;
+}
+
+.mat-header-cell {
+    padding: 0;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+}
+  
+.mat-cell {
+    padding: 0;
+    text-align: center;
+    justify-content:center;
+}
+
+.mat-column-position {
+    flex: 0 0 5%;
+}
+
+.mat-column-username {
+    flex: 0 0 17.5%;
+}
+  
+.mat-column-name {
+    flex: 0 0 20%;
+}
+
+.mat-column-birthDate {
+    flex: 0 0 10%;
+}
+
+.mat-column-address {
+  font-size: small;
+  flex: 0 0 27.5%;
+}
+
+.mat-column-actions {
+  flex: 0 0 20%;
+}
+
+.action-button {
+    margin-left: 0.5rem;
+}
+
+.mat-row:hover {
+    background-color: rgb(235, 247, 181);
+    cursor: pointer;
+}
+
+.highlight{
+    background: #cdf3cf;
+}
+
+.mapping-container {
+    margin-top: 4rem;
+}

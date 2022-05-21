@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+#title {
+    color: rgb(180, 1, 1);
+    font-weight: 500;
+}
+
+#date-time {
+    font-style: italic;
+    font-size: smaller;
+    font-weight: 500;
+}
+
+#sensor a {
+    color: rgb(2, 2, 145);
+    text-decoration: none;
+    font-style: italic;
+    font-weight: 500;
+}
+
+#power span {
+    font-style: italic;
+    font-weight: 500;
+}

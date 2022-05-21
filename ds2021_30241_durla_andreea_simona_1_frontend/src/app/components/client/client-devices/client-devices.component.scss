@@ -1,0 +1,67 @@
+#container {
+    margin: 3rem;
+}
+
+mat-card {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+mat-card-title {
+    font-size: 125%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#energy {
+    height: 20px;
+    width: 20px;
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+#description {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+#address {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    display: flex;
+    flex-direction: row;
+    
+    mat-icon {
+        font-size: 20px;
+        color: rgb(2, 2, 145);
+    }
+}
+
+#energy-consumption {
+    display: flex;
+    flex-direction: row;
+}
+
+#max-energy {
+    margin-right: 2rem;
+}
+
+.mat-expansion-panel {
+    width: 100%;
+}
+
+.mat-expansion-panel:not([class*='mat-elevation-z']) {
+    box-shadow: none;
+}
+
+.mat-expansion-panel-header {
+    padding-left: 0;
+}
+
+.mat-expansion-panel-header-description {
+    font-size: medium;
+    font-weight: 500;
+    text-decoration: underline;
+    color: rgb(2, 2, 145);
+}

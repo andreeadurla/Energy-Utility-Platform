@@ -1,0 +1,71 @@
+<div class="container">
+    <mat-toolbar>
+        <a routerLink="/client" (click)="activate(0)">Energy Utility Platform</a>
+        <button id="notification-button" mat-icon-button [matMenuTriggerFor]="menu" (menuClosed)="readNotifications()">
+          <mat-icon [matBadge]="unreadNotifications" [matBadgeHidden]="unreadNotifications == 0">
+            notifications_active
+          </mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" class="notifications-list">
+          <div *ngIf="notifications.length > 0; else elseBlock">
+            <div id="notification" *ngFor="let notification of notifications.slice().reverse()"
+                [ngClass]="{'unread-notification': notification.read === false}">
+              <p id="date-time">{{notification.timestamp | date: 'medium'}}</p>
+              <p id="sensor">
+                Sensor
+                <a [routerLink]="['/client/energy-statistics']" [queryParams]="{ id: notification.sensorId, date: currentDate}">
+                  #{{notification.sensorId}}
+                </a>
+                has exceeded maximum power</p>
+              <p id="power">Measured power: <span>{{notification.energyConsumption}} kW</span></p>
+            </div>
+          </div>
+
+          <ng-template #elseBlock>
+            <p id="no-notifications">There are no notifications</p>
+          </ng-template>
+        </mat-menu>
+    </mat-toolbar>
+        
+    <mat-sidenav-container>
+        <mat-sidenav mode="side" opened>
+      
+            <div id="username">
+              <mat-icon>person_pin</mat-icon>
+              <span>{{username}}</span>
+            </div>
+      
+            <mat-divider></mat-divider>
+
+            <button mat-button 
+                    [ngClass]="{'menu-button': true, 'active-button': selected === 1}" 
+                    (click)="activate(1)"
+                    routerLink="/client">
+              <mat-icon>home</mat-icon>
+              <span>Home</span>
+            </button>
+      
+            <button mat-button 
+                    [ngClass]="{'menu-button': true, 'active-button': selected === 2}" 
+                    (click)="activate(2)"
+                    [routerLink]="['/client/energy-statistics']" [queryParams]="{ id: 'all', date: currentDate}"
+                    >
+              <mat-icon>assessment</mat-icon>
+              <span>Energy statistics</span>
+            </button>
+        
+            <mat-divider></mat-divider>
+        
+            <button mat-button class="menu-button" (click)="logout()">
+              <mat-icon>logout</mat-icon>
+              <span>Logout</span>
+            </button>
+        </mat-sidenav>
+      
+        <mat-sidenav-content class="content mat-elevation-z8">
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+      
+      </mat-sidenav-container>
+</div>
+  
